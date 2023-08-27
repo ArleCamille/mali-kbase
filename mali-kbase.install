@@ -1,0 +1,14 @@
+post_install() {
+	cat<<EOF
+
+Panfrost conflicts with the mali_kbase module, so replace it with mali_kbase.ko:
+
+	rmmod panfrost
+	modprobe mali_kbase
+
+EOF
+}
+
+post_upgrade() {
+	post_install
+}
